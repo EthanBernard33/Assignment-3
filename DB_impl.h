@@ -15,23 +15,33 @@
 
 #ifndef DB_IMPL_H
 #define DB_IMPL_H
+
 typedef struct {
+    int tableId;
     int siteId;
-    char tableType[50];           // Table type, e.g., "Picnic Table"
-    char surfaceMaterial[50];     // Surface material, e.g., "Wood"
-    char structuralMaterial[50];  // Structural material, e.g., "Steel"
+    int tableTypeId;           // Table type, e.g., "Picnic Table"
+    int surfaceMaterialId;     // Surface material, e.g., "Wood"
+    int structuralMaterialId;  // Structural material, e.g., "Steel"
     char streetAvenue[50];        // Street/Avenue
     int neighbhdId;               // Neighbourhood Id
-    char neighbourhoodName[50];   // Neighbourhood name
     int ward;                     // Ward number
     char latitude[50];            // Latitude as string
     char longitude[50];           // Longitude as string
 } PicnicTable;
+
+typedef struct {
+    PicnicTable* picnicTables;
+    int count;
+    int capacity;
+} PicnicTableData;
+
 // Struct for the main database structure that holds picnic table data
 typedef struct {
-    PicnicTable *picnicTables;  // Array of picnic table entries
-    int picnicTableCount;  // Number of picnic tables
+    PicnicTableData picnicTableEntry;  
+    LookupTable tableType;
+    LookupTable surfaceMaterial;
+    LookupTable structuralMaterial;
+    LookupTable neighborhood; 
 } Database;
-
 
 #endif

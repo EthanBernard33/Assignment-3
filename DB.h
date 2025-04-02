@@ -18,7 +18,15 @@
  * WHICH WILL BE FIELDS IN THE STRUCT DataBase BELOW. YOU MAY DECLARE ADDITIONAL
  * STRUCTS AS NEEDED.
  */
+typedef struct {
+    int code;
+    char* value;
+} LookupEntry;
 
+typedef struct {
+    LookupEntry* entries;
+    int count;
+} LookupTable;
 /*
  * The INIT_SIZE is only relevant if you are using arrays for your data structures. 
  * If you are using linked lists you will not need it
@@ -32,11 +40,11 @@
  */
 typedef struct {
     // You can add anything you see fit here
-    Table *tableTypeTable;
-    Table *surfaceMaterialTable;
-    Table *structuralMaterialTable;
-    NeighbourhoodTable *neighborhoodTable;
-    PicnicTable *picnicTableTable;
+    //LookupTable *tableTypeTable;
+    //LookupTable *surfaceMaterialTable;
+    //LookupTable *structuralMaterialTable;
+    //LookupTable *neighborhoodTable;
+    //PicnicTable *picnicTableTable;
 } DataBase;
 
 /* Declare a global DataBase variable*/
