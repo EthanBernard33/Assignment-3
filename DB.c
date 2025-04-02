@@ -142,6 +142,32 @@ void importDB(Database *db, const char *filename) {
     fclose(file);
 }
 
+// Takes the filename and creates a new file with the database
+int exportDB(const char* filename){
+    //Database db;
+
+    // Populate the database using import
+    //importDB(&db, filename);
+
+    // Export file creation and handling
+    FILE* fp; // pointer to the new file
+    fp = fopen("exportDB.csv", "w");
+
+    if(fp == NULL){
+        printf("There has been an error creating the export File");
+        return 1;
+    }
+
+    // Header of the export file
+    char* header = "Id,Table Type,Surface Material,Structural Material,Street / Avenue,Neighbourhood Id,Neighbourhood Name,Ward,Latitude,Longitude,Location";
+    fprintf(fp, "%s", header);
+
+    // Loop through database appending each field onto the export file
+
+    fclose(fp);
+
+}
+
 //Function to free
 void freeDB(Database *db){
 
@@ -163,6 +189,9 @@ int main() {
         //db.picnicTables[0].siteId, db.picnicTables[0].tableType);
 
     // Free allocated memory
-   // freePicnicTable(&db);
+    // freePicnicTable(&db);
+
+    //exportDB("PicnicTable.csv");
+
     return 0;
 }
